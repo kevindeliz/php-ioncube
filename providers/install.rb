@@ -36,13 +36,13 @@ action :install do
       php_version_output = `php --version`
       php_version = php_version_output.match(/PHP ([0-9]+\.[0-9]+)\.[0-9]+/)[1]
       Chef::Log.info("detected PHP version #{php_version}")
-      ioncube_file_resource = run_context.resource_collection.find(:file => "/etc/php5/apache2/conf.d/ioncube.ini")
+      ioncube_file_resource = run_context.resource_collection.find(:file => "/etc/php5/apache2/conf.d/01-ioncube.ini")
       ioncube_file_resource.content "; priority=00\nzend_extension=/usr/local/ioncube/ioncube_loader_lin_" + php_version + ".so\n"
     end
     only_if { run_context.node[:php_ioncube][:version] == '' }
   end
 
-  file "/etc/php5/apache2/conf.d/ioncube.ini" do
+  file "/etc/php5/apache2/conf.d/01-ioncube.ini" do
     content "; priority=00\nzend_extension=/usr/local/ioncube/ioncube_loader_lin_" + run_context.node[:php_ioncube][:version] + ".so\n"  # dynamically defined during convergence in above ruby_block
     owner "root"
     group "root"
