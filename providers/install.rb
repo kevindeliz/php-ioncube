@@ -28,7 +28,7 @@ action :install do
     code <<-EOH
     tar xvfz /usr/local/src/ioncube_loaders_lin_#{arch_string}.tar.gz
     mv /usr/local/src/ioncube /usr/local
-    php5enmod mcrypt
+    /usr/sbin/php5enmod mcrypt
     EOH
   end
 
