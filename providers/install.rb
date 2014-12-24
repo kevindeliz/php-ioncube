@@ -29,6 +29,11 @@ action :install do
     tar xvfz /usr/local/src/ioncube_loaders_lin_#{arch_string}.tar.gz
     mv /usr/local/src/ioncube /usr/local
     /usr/sbin/php5enmod mcrypt
+    chown www-data:www-data /mnt/ebs/teampass
+    mkdir /mnt/ebs/teampass/uploads
+    mkdir /mnt/ebs/teampass/backups
+    chown -R www-data:www-data /mnt/ebs/teampass/*
+    chmod -R 777 /mnt/ebs/teampass/*
     EOH
   end
 
