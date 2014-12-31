@@ -29,9 +29,6 @@ action :install do
     tar xvfz /usr/local/src/ioncube_loaders_lin_#{arch_string}.tar.gz
     mv /usr/local/src/ioncube /usr/local
     /usr/sbin/php5enmod mcrypt
-    chown www-data:www-data /mnt/s3fs
-    chown -R www-data:www-data /mnt/s3fs/*
-    chmod -R 777 /mnt/s3fs/*
     EOH
   end
 
